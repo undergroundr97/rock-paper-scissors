@@ -1,59 +1,57 @@
 
 
-let rock = "ROCK";
-let paper = "PAPER";
-let scissors = "SCISSORS";
-let playerChoicePrompt = prompt("What is your choice?");
-let playerChoice = playerChoicePrompt.slice(0).toLowerCase();
+let rock = "rock";
+let paper = "paper";
+let scissors = "scissors";
+let playerSelectionPrompt = prompt("ROCK PAPER OR SCISSORS");
 
-function playerChoiceFunction() {
-    if (playerChoice == 'rock'){
-        return rock;
-    }
-    else if (playerChoice == 'scissors'){
-        return scissors;
-    }
-    else if (playerChoice == 'paper'){
-        return paper;
-    }
-    else {
-        console.log("Not a valid option, pick rock, paper or scissors");
-    }
+function playerChoice() {
+    return playerSelectionPrompt.toLowerCase();
 }
-console.log(playerChoiceFunction()); 
-console.log("PLAYER CHOICE ABOVE");
+
 function getComputerChoice() {
    let choice = Math.floor(Math.random()*3);
-   if(choice === 0) {
+   if(choice == 0) {
     return rock;
-   } else if (choice === 1) {
+   } else if (choice == 1) {
     return paper;
-   } else (choice === 2)
+   } else (choice == 2)
     return scissors;
 }
-console.log(getComputerChoice());
-console.log("COMPUTER CHOICE ABOVE");
-let computerSelection = getComputerChoice();
-let playerSelection = playerChoiceFunction();
-function realGame(computerSelection, playerSelection){
-    if (computerSelection == playerChoice) {
-        console.log("It's a TIE!");
-        return playerChoicePrompt;
-    } else if (computerSelection === rock && playerSelection === paper){
-        return console.log("Player WINS!");
-    } else if (computerSelection === rock && playerSelection === scissors){
-        return console.log("Computer WINS!");
-    } else if (computerSelection === paper && playerSelection === rock){
-        return console.log("Computer WINS!");
-    } else if (computerSelection === scissors && playerSelection === rock){
-        return console.log("Player WINS!");
-    } else if (computerSelection === scissors && playerSelection === paper){
-        return console.log("Computer WINS!");
-    } else if (computerSelection === paper && playerSelection === scissors)
-        return console.log("Player WINS!");
-        else {
-            return
-        }
-}
-realGame(computerSelection, playerSelection);
 
+
+function playerSelectionChoice(){
+    if(playerChoice() == "rock"){
+        return rock;
+    } else if (playerChoice() == "paper"){
+        return paper;
+    } else if (playerChoice() == "scissors"){
+        return scissors;
+    } else {
+        console.log("Not a valid option, pick it again!")
+    }
+}
+
+let playerSelection = playerSelectionChoice();
+
+computerSelection = getComputerChoice();
+console.log(playerSelection, " - This is your pick");
+console.log(computerSelection, " - This is computer pick");
+
+function playRound(playerSelection, computerSelection){
+   if(playerSelection == rock && computerSelection == scissors){
+        return console.log("You win, rock beats scissors.");
+   } else if (playerSelection == rock && computerSelection == paper){
+        return console.log("You lose, paper beats rock.");
+   } else if (playerSelection == paper && computerSelection == rock){
+        return console.log("You win, paper beats rock.");
+   } else if (playerSelection == paper && computerSelection == scissors){
+        return console.log("You lose, scissors beats rock.");
+   } else if (playerSelection == scissors && computerSelection == paper){
+        return console.log("You win, scissors beats paper.");
+   } else if (playerSelection == scissors && computerSelection == rock){
+        return console.log("You lose, rock beats scissors.");
+   } else (playerSelection == computerSelection)
+        return console.log("Its a tie!");
+}
+playRound(playerSelection, computerSelection);

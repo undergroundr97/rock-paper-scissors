@@ -1,8 +1,8 @@
-
-
 let rock = "rock";
 let paper = "paper";
 let scissors = "scissors";
+
+let match = function (){
 
 function getComputerChoice() {
    let choice = Math.floor(Math.random()*3);
@@ -31,6 +31,12 @@ let playerSeleciton = getPlayerChoice();
 let computerSelection = getComputerChoice();
 console.log(playerSeleciton, " - Player");
 console.log(computerSelection, " - Computer");
+    return {
+        "playerSelection": playerSeleciton,
+        "computerSelection": computerSelection
+    }
+}
+
 function playRound(playerSeleciton, computerSelection){
     if(playerSeleciton == rock && computerSelection == scissors){
         return console.log("You win, rock beats scissors.");
@@ -49,10 +55,9 @@ function playRound(playerSeleciton, computerSelection){
 }
 
 function game(){
-  for(i = 0; i < 2; i++){
-    playRound(playerSeleciton, computerSelection);
-  }
-
- 
-}
+    for (i = 0; i < 5; i++){
+        let repeat = match();
+        playRound(repeat.playerSelection, repeat.computerSelection);
+    }
+}  
 game();

@@ -1,6 +1,8 @@
 let rock = "rock";
 let paper = "paper";
 let scissors = "scissors";
+let userScore = parseInt(0);
+let computerScore = parseInt(0);
 
 let match = function (){
 
@@ -39,19 +41,19 @@ console.log(computerSelection, " - Computer");
 
 function playRound(playerSeleciton, computerSelection){
     if(playerSeleciton == rock && computerSelection == scissors){
-        return console.log("You win, rock beats scissors.");
+        return userScore++, console.log("You win, rock beats scissors.");
    } else if (playerSeleciton == rock && computerSelection == paper){
-        return console.log("You lose, paper beats rock.");
+        return computerScore++, console.log("You lose, paper beats rock.");
    } else if (playerSeleciton == paper && computerSelection == rock){
-        return console.log("You win, paper beats rock.");
+        return userScore++, console.log("You win, paper beats rock.");
    } else if (playerSeleciton == paper && computerSelection == scissors){
-        return console.log("You lose, scissors beats rock.");
+        return computerScore++, console.log("You lose, scissors beats rock.");
    } else if (playerSeleciton == scissors && computerSelection == paper){
-        return console.log("You win, scissors beats paper.");
+        return userScore++, console.log("You win, scissors beats paper.");
    } else if (playerSeleciton == scissors && computerSelection == rock){
-        return console.log("You lose, rock beats scissors.");
+        return computerScore++, console.log("You lose, rock beats scissors.");
    } else (playerSeleciton == computerSelection)
-        return console.log("Its a tie!");
+        return alert("Its a tie pick again"), i--;
 }
 
 function game(){
@@ -60,4 +62,14 @@ function game(){
         playRound(repeat.playerSelection, repeat.computerSelection);
     }
 }  
+
+function winner(){
+    if(userScore >= 3){
+        return alert(`YOU WINT WITH ${userScore} POINTS!`), console.log('You are the winner!')
+    } else (computerScore >= 3)
+        return alert(`COMPUTER WINS WITH ${computerScore} POINTS!`), console.log('Computer is the winner')
+}
 game();
+winner();
+console.log(userScore, " - This is your score");
+console.log(computerScore, " - This is computer score");

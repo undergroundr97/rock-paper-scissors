@@ -26,7 +26,7 @@ function getPlayerChoice() {
     } else if (playerChoice == "scissors"){
         return scissors;
     } else {
-        return console.log("Pick a valid selection");
+        return
     }
 }
 let playerSeleciton = getPlayerChoice();
@@ -52,8 +52,10 @@ function playRound(playerSeleciton, computerSelection){
         return userScore++, console.log("You win, scissors beats paper.");
    } else if (playerSeleciton == scissors && computerSelection == rock){
         return computerScore++, console.log("You lose, rock beats scissors.");
-   } else (playerSeleciton == computerSelection)
+   } else if (playerSeleciton == computerSelection){
         return alert("Its a tie pick again"), i--;
+    } else (playerSeleciton == null)
+        return  i--, console.log("Pick a valid selection");
 }
 
 function game(){

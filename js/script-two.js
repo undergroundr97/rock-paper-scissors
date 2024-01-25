@@ -59,7 +59,7 @@ function playRound(playerSeleciton, computerSelection){
 }
 
 function game(){
-    for (i = 0; i < 5; i++){
+    for (i = 0; i < 1; i++){
         let repeat = match();
         playRound(repeat.playerSelection, repeat.computerSelection);
     }
@@ -71,7 +71,28 @@ function winner(){
     } else (computerScore >= 3)
         return alert(`COMPUTER WINS WITH ${computerScore} POINTS!`), console.log('Computer is the winner')
 }
-game();
-winner();
+
+
 console.log(userScore, " - This is your score");
 console.log(computerScore, " - This is computer score");
+
+const rockButton = document.createElement('button');
+const paperButton = document.createElement('button');
+const scissorsButton = document.createElement('button');
+const playerButtons = document.querySelector('#play');
+playerButtons.appendChild(rockButton);
+playerButtons.appendChild(scissorsButton);
+playerButtons.appendChild(paperButton);
+rockButton.textContent = "ROCK!";
+paperButton.textContent = "PAPER!";
+scissorsButton.textContent = "SCISSORS!";
+
+rockButton.addEventListener('click', () =>{
+    return match();
+});
+paperButton.addEventListener('click', () => {
+    return paper, console.log(paper);
+});
+scissorsButton.addEventListener('click', () =>{
+    return scissors, console.log(scissors);
+})

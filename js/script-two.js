@@ -16,20 +16,7 @@ function getComputerChoice() {
     return scissors;
 }
 
-function getPlayerChoice() {
-    let playerPick = prompt("ROCK PAPER OR SCISSORS");
-    let playerChoice = playerPick.toLowerCase();
-    if (playerChoice == "rock"){
-        return rock;
-    } else if (playerChoice == "paper"){
-        return paper;
-    } else if (playerChoice == "scissors"){
-        return scissors;
-    } else {
-        return
-    }
-}
-let playerSeleciton = getPlayerChoice();
+let playerSeleciton = playerChoice;
 let computerSelection = getComputerChoice();
 console.log(playerSeleciton, " - Player");
 console.log(computerSelection, " - Computer");
@@ -53,16 +40,14 @@ function playRound(playerSeleciton, computerSelection){
    } else if (playerSeleciton == scissors && computerSelection == rock){
         return computerScore++, console.log("You lose, rock beats scissors.");
    } else if (playerSeleciton == computerSelection){
-        return alert("Its a tie pick again"), i--;
+        return ("Its a tie pick again");
     } else (playerSeleciton == null)
-        return  i--, console.log("Pick a valid selection");
+        return console.log("Pick a valid selection");
 }
 
 function game(){
-    for (i = 0; i < 1; i++){
         let repeat = match();
         playRound(repeat.playerSelection, repeat.computerSelection);
-    }
 }  
 
 function winner(){
@@ -72,27 +57,28 @@ function winner(){
         return alert(`COMPUTER WINS WITH ${computerScore} POINTS!`), console.log('Computer is the winner')
 }
 
-
 console.log(userScore, " - This is your score");
 console.log(computerScore, " - This is computer score");
 
+const scoreBoard = document.querySelector('#play');
 const rockButton = document.createElement('button');
 const paperButton = document.createElement('button');
 const scissorsButton = document.createElement('button');
-const playerButtons = document.querySelector('#play');
-playerButtons.appendChild(rockButton);
-playerButtons.appendChild(scissorsButton);
-playerButtons.appendChild(paperButton);
-rockButton.textContent = "ROCK!";
 paperButton.textContent = "PAPER!";
-scissorsButton.textContent = "SCISSORS!";
+scissorsButton.textContent= "SCISSORS!";
+rockButton.textContent = "ROCK!";
+scoreBoard.appendChild(rockButton);
+scoreBoard.appendChild(paperButton);
+scoreBoard.appendChild(scissorsButton);
 
-rockButton.addEventListener('click', () =>{
-    return match();
-});
+rockButton,addEventListener('click', () => {
+    return playerChoice = rock, game();
+})
+
+scissorsButton.addEventListener('click', () => {
+    return playerChoice = scissors, game();
+})
+
 paperButton.addEventListener('click', () => {
-    return paper, console.log(paper);
-});
-scissorsButton.addEventListener('click', () =>{
-    return scissors, console.log(scissors);
+    return playerChoice == paper, playRound();
 })

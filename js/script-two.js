@@ -44,6 +44,11 @@ function winner(){
             return 
         }
 }
+function reset (){
+    if(userScore == 5 || computerScore == 5){ 
+        return userScore = parseInt(0), computerScore = parseInt(0);
+    }
+}
 
 const section = document.querySelector('section');
 const divScore = document.createElement('div')
@@ -62,15 +67,15 @@ scoreBoard.textContent = `You won ${userScore} times and Computer won ${computer
 section.appendChild(scoreBoard);
 
 rockButton,addEventListener('click', () => {
-    return playerSelection = rock, playRound(playerSelection, getComputerChoice()), scoreBoard.textContent = `You won ${userScore} times and Computer won ${computerScore} times.`, winner();
+    return playerSelection = rock, playRound(playerSelection, getComputerChoice()), scoreBoard.textContent = `You won ${userScore} times and Computer won ${computerScore} times.`, winner(), reset();
 })
 
 scissorsButton.addEventListener('click', () => {
-    return playerSelection = scissors, playRound(playerSelection, getComputerChoice()), scoreBoard.textContent = `You won ${userScore} times and Computer won ${computerScore} times.`, winner();
+    return playerSelection = scissors, playRound(playerSelection, getComputerChoice()), scoreBoard.textContent = `You won ${userScore} times and Computer won ${computerScore} times.`, winner(), reset();
 })
 
 paperButton.addEventListener('click', () => {
-    return playerSelection = paper, playRound(playerSelection, getComputerChoice()), scoreBoard.textContent = `You won ${userScore} times and Computer won ${computerScore} times.`, winner();
+    return playerSelection = paper, playRound(playerSelection, getComputerChoice()), scoreBoard.textContent = `You won ${userScore} times and Computer won ${computerScore} times.`, winner(), reset();
 })
 
 console.log(userScore, " - This is your score");

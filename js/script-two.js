@@ -29,7 +29,7 @@ function playRound(playerSeleciton, computerSelection){
    } else if (playerSeleciton == scissors && computerSelection == rock){
         return computerScore++, console.log("You lose, rock beats scissors.");
    } else if (playerSeleciton == computerSelection){
-        return console.log("Its a tie pick again");
+        return console.log("Its a tie pick again"), section.appendChild(scoreBoardTie);;
     } else (playerSeleciton == null)
         return console.log("Pick a valid selection");
 }
@@ -37,36 +37,39 @@ function playRound(playerSeleciton, computerSelection){
 
 function winner(){
     if(userScore == 5){
-        return alert(`YOU WIN WITH ${userScore} POINTS!`), console.log('You are the winner!')
+        alert(`YOU WIN WITH ${userScore} POINTS!`), console.log('You are the winner!')
     } else if (computerScore == 5)
-        return alert(`COMPUTER WINS WITH ${computerScore} POINTS!`), console.log('Computer is the winner')
+        alert(`COMPUTER WINS WITH ${computerScore} POINTS!`), console.log('Computer is the winner')
         else {
             return 
         }
 }
 function reset (){
     if(userScore == 5 || computerScore == 5){ 
-        return userScore = parseInt(0), computerScore = parseInt(0);
+        return console.log("!Game over!"), userScore = parseInt(0), computerScore = parseInt(0), scoreBoard.textContent = `You won ${userScore} times and Computer won ${computerScore} times.`;
     }
 }
 
-const section = document.querySelector('section');
+const section = document.querySelector('#play');
 const divScore = document.createElement('div')
 section.appendChild(divScore);
+divScore.setAttribute('class', 'playBtns')
 const rockButton = document.createElement('button');
-const paperButton = document.createElement('button');
-const scissorsButton = document.createElement('button');
-paperButton.textContent = "PAPER!";
-scissorsButton.textContent= "SCISSORS!";
-rockButton.textContent = "ROCK!";
 divScore.appendChild(rockButton);
+rockButton.textContent = "ROCK!";
+rockButton.setAttribute('class', 'playBtn');
+const paperButton = document.createElement('button');
 divScore.appendChild(paperButton);
+paperButton.textContent = "PAPER!";
+paperButton.setAttribute('class', 'playBtn');
+const scissorsButton = document.createElement('button');
+scissorsButton.textContent= "SCISSORS!";
 divScore.appendChild(scissorsButton);
+scissorsButton.setAttribute('class', 'playBtn');
 const scoreBoard = document.createElement('p');
 scoreBoard.textContent = `You won ${userScore} times and Computer won ${computerScore} times.`
 section.appendChild(scoreBoard);
-
-rockButton,addEventListener('click', () => {
+rockButton.addEventListener('click', () => {
     return playerSelection = rock, playRound(playerSelection, getComputerChoice()), scoreBoard.textContent = `You won ${userScore} times and Computer won ${computerScore} times.`, winner(), reset();
 })
 

@@ -1,0 +1,31 @@
+#play {
+    display: flex;
+    height: 200px;
+    background-color: pink;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.playBtn {
+    font-size: 30px;
+    gap: 40px;
+    border-radius: 1px;
+    background-color: rgb(53, 135, 241);
+    box-shadow: 0 7px 10px;
+    font-weight: 700;
+    transition: 0.2s all;
+}
+
+.playBtn:hover{
+    background-color: lightgreen;
+}
+.playBtn:active{
+    transform: scale(0.90);
+    box-shadow: 0 3px 5px;
+}
+.playBtns {
+    display: flex;
+    gap: 30px;
+}
